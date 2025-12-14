@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Parking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Loading Screen -->
+<div id="loadingOverlay">
+  <div class="dots-loader">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <p class="loading-text">Loading...</p>
+</div>
+
+
+  <header class="topbar">
+    <div>
+      <h1>Smart Parking</h1>
+      <p class="subtitle">Booking system</p>
+    </div>
+    <div class="actions">
+      <button class="btn primary" onclick="openBooking()">Book Now</button>
+      <button class="btn" onclick="openCancelModal()">Cancel Reservation</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="summary" class="summary-row">
+      <div class="card">
+        <div class="card-title">Available</div>
+        <div id="availableCount" class="big">0</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Reserved</div>
+        <div id="reservedCount" class="big">0</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Occupied</div>
+        <div id="occupiedCount" class="big">0</div>
+      </div>
+      <div class="card small">
+        <div class="card-title">Last update</div>
+        <div id="lastUpdate" class="muted">—</div>
+      </div>
+    </section>
+
+    <section id="parking-grid" class="grid"></section>
+  </main>
+
+  <footer class="footer">
+    <small>Smart Parking &copy;2025</small>
+  </footer>
+
+  <!-- BOOKING MODAL -->
+  <div id="bookingModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" onclick="closeBooking()">✕</button>
+      <h2>Reserve a Spot</h2>
+
+      <label>Name</label>
+      <input id="bookName" type="text" placeholder="Full name">
+
+      <label>Phone</label>
+      <input id="bookPhone" type="tel" placeholder="+2010xxxxxxx">
+
+      <label>Spot</label>
+      <select id="bookSpot"></select>
+
+      <label>Start Time</label>
+      <input id="startTime" type="time" onchange="updateBookingPrice()" />
+
+      <label>End Time</label>
+      <input id="endTime" type="time" onchange="updateBookingPrice()" />
+
+
+      <p class="price">Total: <strong id="bookingPrice">30</strong> EGP</p>
+
+      <div class="row">
+        <button class="btn primary" onclick="submitReservation()">Confirm</button>
+        <button class="btn" onclick="closeBooking()">Cancel</button>
+      </div>
+
+    </div>
+
+    <p>Verification Code: <span id="otpCode"></span></p>
+  </div>
+
+  <!-- CANCEL MODAL -->
+  <div id="cancelModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" onclick="closeCancelModal()">✕</button>
+      <h2>Cancel Reservation</h2>
+
+      <label>Phone</label>
+      <input id="cancelPhone" type="tel" placeholder="+2010xxxxxxx">
+
+      <div class="row">
+        <button class="btn primary" onclick="submitCancel()">Cancel Booking</button>
+        <button class="btn" onclick="closeCancelModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
