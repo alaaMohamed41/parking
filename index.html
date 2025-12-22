@@ -2,116 +2,181 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Parking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
+<body class="loading">
 
 <!-- Loading Screen -->
 <div id="loadingOverlay">
   <div class="dots-loader">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
   <p class="loading-text">Loading...</p>
 </div>
 
 
-  <header class="topbar">
-    <div>
-      <h1>Smart Parking</h1>
-      <p class="subtitle">Booking system</p>
+
+<!-- Header -->
+<header class="topbar">
+  <div>
+    <h1>Smart Parking</h1>
+    <p class="subtitle">Booking System</p>
+  </div>
+  <div class="actions">
+    <button class="btn primary" onclick="openBooking()">Book Now</button>
+    <button class="btn" onclick="openCancelModal()">Cancel Reservation</button>
+  </div>
+</header>
+  
+<!-- University Logo Bar -->
+<div class="university-bar">
+  <img src="./download (1).png" alt="University Logo">
+  <span>May University in Cairo – Faculty of Engineering</span>
+</div>
+
+
+
+<main>
+  <!-- Summary Cards -->
+  <section class="summary-row">
+    <div class="card">
+      <div class="card-title">Available</div>
+      <div id="availableCount" class="big">0</div>
     </div>
-    <div class="actions">
-      <button class="btn primary" onclick="openBooking()">Book Now</button>
-      <button class="btn" onclick="openCancelModal()">Cancel Reservation</button>
+    <div class="card">
+      <div class="card-title">Reserved</div>
+      <div id="reservedCount" class="big">0</div>
     </div>
-  </header>
+    <div class="card">
+      <div class="card-title">Occupied</div>
+      <div id="occupiedCount" class="big">0</div>
+    </div>
+    <div class="card small">
+      <div class="card-title">Last update</div>
+      <div id="lastUpdate" class="muted">—</div>
+    </div>
+  </section>
 
-  <main>
-    <section id="summary" class="summary-row">
-      <div class="card">
-        <div class="card-title">Available</div>
-        <div id="availableCount" class="big">0</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Reserved</div>
-        <div id="reservedCount" class="big">0</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Occupied</div>
-        <div id="occupiedCount" class="big">0</div>
-      </div>
-      <div class="card small">
-        <div class="card-title">Last update</div>
-        <div id="lastUpdate" class="muted">—</div>
-      </div>
-    </section>
+  <!-- Parking Grid -->
+  <section id="parking-grid" class="grid"></section>
 
-    <section id="parking-grid" class="grid"></section>
-  </main>
+  <!-- Academic / Project Section -->
+  <section class="academic-section">
+    <div class="academic-header">
+      <img src="./728fa1_189554f74b784138992451a02b3c02d1~mv2.png" alt="University Logo" class="academic-logo">
+      <h2>Smart Vertical Parking System</h2>
+      <p>An Intelligent Automated Parking Solution</p>
+    </div>
 
-  <footer class="footer">
-    <small>Smart Parking &copy;2025</small>
-  </footer>
-
-  <!-- BOOKING MODAL -->
-  <div id="bookingModal" class="modal hidden">
-    <div class="modal-card">
-      <button class="close" onclick="closeBooking()">✕</button>
-      <h2>Reserve a Spot</h2>
-
-      <label>Name</label>
-      <input id="bookName" type="text" placeholder="Full name">
-
-      <label>Phone</label>
-      <input id="bookPhone" type="tel" placeholder="+2010xxxxxxx">
-
-      <label>Spot</label>
-      <select id="bookSpot"></select>
-
-      <label>Start Time</label>
-      <input id="startTime" type="time" onchange="updateBookingPrice()" />
-
-      <label>End Time</label>
-      <input id="endTime" type="time" onchange="updateBookingPrice()" />
-
-
-      <p class="price">Total: <strong id="bookingPrice">30</strong> EGP</p>
-
-      <div class="row">
-        <button class="btn primary" onclick="submitReservation()">Confirm</button>
-        <button class="btn" onclick="closeBooking()">Cancel</button>
+    <div class="academic-content">
+      <div class="academic-box">
+        <h3>Project Overview</h3>
+        <p>
+          A smart automated parking system designed to optimize parking space
+          using vertical structures. The system relies on sensors and automated
+          mechanisms to manage vehicle parking efficiently and safely.
+        </p>
       </div>
 
+      <div class="academic-box">
+        <h3>Project Model</h3>
+        <img src="./WhatsApp Image 2025-12-22 at 10.22.16 PM.jpeg" alt="Smart Parking Model">
+        <p class="caption">Figure: Multi-level automated smart parking system model</p>
+      </div>
+
+      <div class="academic-box">
+        <h3>Motivation & Impact</h3>
+        <ul>
+          <li>Limited parking spaces in urban areas</li>
+          <li>Traffic congestion while searching for parking</li>
+          <li>Vertical space optimization</li>
+          <li>Enhanced safety and efficiency</li>
+        </ul>
+      </div>
+
+      <div class="academic-box">
+        <h3>Team Members</h3>
+        <ul>
+          <li>Zeina Hassan</li>
+          <li>Alaa Mohamed</li>
+          <li>Maruska Nabil</li>
+          <li>Ahmed Yassin</li>
+          <li>Yara Mohamed</li>
+          <li>Ahmed Emad</li>
+          <li>Farah Abdelhady</li>
+          <li>Haneen Roshdy</li>
+          <li>Habiba Wael</li>
+          <li>Gana Mohamed</li>
+          <li>Zahraa Mohamed</li>
+          <li>Gaser ahmed</li>
+        </ul>
+      </div>
+
+      <div class="academic-box">
+        <h3>Supervision</h3>
+        <p><strong>Supervisor:</strong> Dr. Seham</p>
+        <p><strong>Teaching Assistant:</strong> Eng. Mariam Adel</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <small>Software Engineering Project – 2025</small>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div id="bookingModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" onclick="closeBooking()">✕</button>
+    <h2>Reserve a Spot</h2>
+
+    <label>Name</label>
+    <input id="bookName" type="text" placeholder="Full name">
+
+    <label>Phone</label>
+    <input id="bookPhone" type="tel" placeholder="+2010xxxxxxx">
+
+    <label>Spot</label>
+    <select id="bookSpot"></select>
+
+    <label>Start Time</label>
+    <input id="startTime" type="time" onchange="updateBookingPrice()" />
+
+    <label>End Time</label>
+    <input id="endTime" type="time" onchange="updateBookingPrice()" />
+
+    <p class="price">Total: <strong id="bookingPrice">0</strong> EGP</p>
+
+    <div class="row">
+      <button class="btn primary" onclick="submitReservation()">Confirm</button>
+      <button class="btn" onclick="closeBooking()">Cancel</button>
     </div>
   </div>
+</div>
 
-   
+<!-- CANCEL MODAL -->
+<div id="cancelModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" onclick="closeCancelModal()">✕</button>
+    <h2>Cancel Reservation</h2>
 
-  <!-- CANCEL MODAL -->
-  <div id="cancelModal" class="modal hidden">
-    <div class="modal-card">
-      <button class="close" onclick="closeCancelModal()">✕</button>
-      <h2>Cancel Reservation</h2>
+    <label>Phone</label>
+    <input id="cancelPhone" type="tel" placeholder="+2010xxxxxxx">
 
-      <label>Phone</label>
-      <input id="cancelPhone" type="tel" placeholder="+2010xxxxxxx">
-
-      <div class="row">
-        <button class="btn primary" onclick="submitCancel()">Cancel Booking</button>
-        <button class="btn" onclick="closeCancelModal()">Close</button>
-      </div>
+    <div class="row">
+      <button class="btn primary" onclick="submitCancel()">Cancel Booking</button>
+      <button class="btn" onclick="closeCancelModal()">Close</button>
     </div>
   </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
 
 
 
